@@ -1,8 +1,8 @@
 module.exports = {
-    HOST: "localhost",
-    USER: "shadow",
-    PASSWORD: "",
-    DB: "ramen_app_backend",
+    HOST: process.env.PGHOST,
+    USER: process.env.PGUSER,
+    PASSWORD: process.env.PGPASSWORD,
+    DB: process.env.PGDATABASE,
     dialect: "postgres",
     pool: {
         max: 5,

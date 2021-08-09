@@ -23,6 +23,7 @@ app.get('/', (req, res) => {
 })
 
 require('./app/routes/store.routes')(app);
+require('./app/routes/user.routes')(app);
 
 app.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}`);

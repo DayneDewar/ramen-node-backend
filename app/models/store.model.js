@@ -20,7 +20,7 @@ module.exports = (sequelize, Sequelize) => {
         },
         rating: {
             type: Sequelize.INTEGER
-        },
+        }
     });
 
     return Store;
