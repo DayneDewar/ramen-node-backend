@@ -44,6 +44,42 @@ exports.allUsers = (req, res) => {
         });
 }
 
+exports.findOne = (req, res) => {
+    const id = req.params.id
+
+    User.findByPk(id)
+        .then(data => {
+            res.send(data)
+        })
+        .catch(err => {
+            res.status(500).send({
+                message: err.message || "Some error occured while finding User with id=" + id
+            })
+        })
+}
+
+exports.login = (req, res) => {
+    const username = req.body.email
+    const pass = req.body.password
+
+    User.findOne({where: {email: username}})
+        .then(data => {
+            if (data.password == pass) {
+                res.send(data)
+            } else {
+                res.status(401).send({
+                    message: "Incorrect Password, please try again!"
+                })
+            }
+        })
+        .catch(err => {
+            res.status(401).send({
+                message: "Incorrect Username, please try again!"
+            })
+        })
+
+}
+
 exports.update = (req, res) => {
     const id = req.params.id
 
